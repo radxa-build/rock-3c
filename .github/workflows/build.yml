@@ -10,16 +10,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Get time
+      - name: Get current time
+        uses: josStorer/get-current-time@v2
         id: time
-        uses: nanzm/get-time-action@v1.1
         with:
           format: 'YYYYMMDD-HHmm'
       - name: Create empty release
         id: release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ steps.time.outputs.time }}
+          tag_name: ${{ steps.time.outputs.formattedTime }}
           body_path: README.md
           token: ${{ secrets.GITHUB_TOKEN }}
           target_commitish: main
@@ -33,9 +33,9 @@ jobs:
     strategy:
       matrix:
         boards: [rock-3c]
-        build_systems: [debos, rbuild]
+        build_systems: [rbuild]
         distros: [debian, ubuntu]
-        flavors: [kde, cli]
+        flavors: [kde, cli, .lxqt, .xfce]
         exclude:
           - build_systems: debos
             distros: debian
