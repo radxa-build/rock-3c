@@ -35,7 +35,7 @@ jobs:
         boards: [rock-3c]
         build_systems: [rbuild]
         distros: [debian, ubuntu]
-        flavors: [kde, cli, .lxqt, .xfce]
+        flavors: [xfce, cli]
         exclude:
           - build_systems: debos
             distros: debian
