@@ -34,7 +34,7 @@ jobs:
       matrix:
         boards: [rock-3c]
         build_systems: [rbuild]
-        distros: [debian, ubuntu, buster]
+        distros: [debian, ubuntu]
         flavors: [xfce, cli]
         exclude:
           - build_systems: debos
